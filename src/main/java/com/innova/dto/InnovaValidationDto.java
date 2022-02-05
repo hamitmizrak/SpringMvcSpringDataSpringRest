@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
+import javax.validation.constraints.*;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -13,9 +15,21 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 public class InnovaValidationDto {
 
+    @NotEmpty(message = "adı alanını boş geçemezsiniz")
     private String userName;
+
+    @NotEmpty(message = "soyadı alanını boş geçemezsiniz")
     private String userSurname;
+
+    @NotEmpty(message = "email alanını boş geçemezsiniz")
+    @Email(message = "uygun formatta mail giriniz")
     private String emailAddress;
+
+    @Min(value=18,message = "18 yaşından küçüksünüz başvuramazsınız")
+    @Max(value=45,message = "45 yaşından büyüksünüz başvuramazsınız")
     private int userAge;
+
+    @NotEmpty(message = "mesaj alanını boş geçemezsiniz")
+    @Size(min=1,max=250)
     private String userMessage;
 }

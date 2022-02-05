@@ -1,0 +1,26 @@
+<!doctype html>
+<html  th:lang="${#locale.language}"  xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <title>Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <link rel="stylesheet"   th:href="@{/css/style.css}">
+    <script th:src="@{/js/template.js}"></script>
+</head>
+<body>
+<!--start codes-->
+
+
+<h1 class="text-center text-primary">Kayıt başaırılı </h1>
+<p th:text="#{adi}"></p>
+
+<a href="templates/birinci">Click me</a>
+
+<!--end codes-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

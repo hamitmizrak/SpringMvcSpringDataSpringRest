@@ -21,29 +21,34 @@ th:object:model key-->
         <div class="row">
                 <div th:text="#{userName}" class="col-md-2">:</div>
                 <div class="col-md-10 form-group" >
-                    <input th:field="*{userName}"  type="text"  class="form-control" autofocus    >
+                    <input th:field="*{userName}"  type="text"  class="form-control" autofocus>
+                    <div th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}" ></div>
                 </div>
 
             <div th:text="#{userSurname}" class="col-md-2">:</div>
             <div class="col-md-10 form-group" >
-                <input th:field="*{userSurname}"  type="text"  class="form-control"     >
+                <input th:field="*{userSurname}"  type="text"  class="form-control" >
+                <div th:if="${#fields.hasErrors('userSurname')}" th:errors="*{userSurname}" ></div>
             </div>
 
             <div th:text="#{emailAddress}" class="col-md-2">:</div>
             <div class="col-md-10 form-group" >
                 <input th:field="*{emailAddress}"  type="text"  class="form-control"     >
+                <div th:if="${#fields.hasErrors('emailAddress')}" th:errors="*{emailAddress}" ></div>
             </div>
 
 
             <div th:text="#{userAge}" class="col-md-2">:</div>
             <div class="col-md-10 form-group" >
                 <input th:field="*{userAge}"  type="text"  class="form-control"     >
+                <div th:if="${#fields.hasErrors('userAge')}" th:errors="*{userAge}" ></div>
             </div>
 
 
             <div th:text="#{userMessage}" class="col-md-2">:</div>
             <div class="col-md-10 form-group" >
                 <input th:field="*{userMessage}"  type="text"  class="form-control"     >
+                <div th:if="${#fields.hasErrors('userMessage')}" th:errors="*{userMessage}" ></div>
             </div>
 
 

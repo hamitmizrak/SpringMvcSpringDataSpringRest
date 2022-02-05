@@ -1,15 +1,20 @@
 <!doctype html>
-<html lang="en">
+<html  th:lang="${#locale.language}"  xmlns:th="http://www.thymeleaf.org" >
 <head>
     <title>Title</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+
+
 </head>
 <body>
 <!--start codes-->
 
-<h1 class="text-center text-primary">Anasayfa</h1>
+
+<h1 class="text-center text-primary">Anasayfa </h1>
+<p th:text="#{adi}"></p>
 
 <!--end codes-->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

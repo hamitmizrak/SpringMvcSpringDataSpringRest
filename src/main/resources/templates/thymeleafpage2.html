@@ -1,22 +1,21 @@
 <!doctype html>
 <html  th:lang="${#locale.language}"  xmlns:th="http://www.thymeleaf.org" >
 <head>
-    <title>Title</title>
+    <title>Thymeleaf -2 </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
     <link rel="stylesheet"   th:href="@{/css/style.css}">
     <script th:src="@{/js/template.js}"></script>
 </head>
 <body>
 <!--start codes-->
-
-
-<h1 class="text-center text-primary">Anasayfa </h1>
+<h2 th:text="${mvc_key}" class="text-center text-primary"> </h2>
 <p th:text="#{adi}"></p>
+<h1 th:text="'Merhabalar Thymelaf'" class="text-center text-primary"> </h1>
+<h3 class="innova" >Merhabalar</h3>
 
-<a href="templates/birinci">Click me</a>
+
 
 <!--end codes-->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

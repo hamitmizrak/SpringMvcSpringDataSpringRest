@@ -10,42 +10,44 @@
 </head>
 <body class="bg-dark text-white">
 <!--start codes-->
-th:action:getMapping
-th:object:model key
+<!--th:action:getMapping
+th:object:model key-->
+
+<p th:text="#{form}" class="text-center display-4 text-uppercase"></p>
 
 <form th:method="post" th:action="@{/formurl}" th:object="${key_form}" >
 
     <div class="container">
         <div class="row">
-                <div class="col-md-2">userName:</div>
+                <div th:text="#{userName}" class="col-md-2">:</div>
                 <div class="col-md-10 form-group" >
                     <input th:field="*{userName}"  type="text"  class="form-control" autofocus    >
                 </div>
 
-            <div class="col-md-2">userSurname:</div>
+            <div th:text="#{userSurname}" class="col-md-2">:</div>
             <div class="col-md-10 form-group" >
                 <input th:field="*{userSurname}"  type="text"  class="form-control"     >
             </div>
 
-            <div class="col-md-2">emailAddress:</div>
+            <div th:text="#{emailAddress}" class="col-md-2">:</div>
             <div class="col-md-10 form-group" >
                 <input th:field="*{emailAddress}"  type="text"  class="form-control"     >
             </div>
 
 
-            <div class="col-md-2">userAge:</div>
+            <div th:text="#{userAge}" class="col-md-2">:</div>
             <div class="col-md-10 form-group" >
                 <input th:field="*{userAge}"  type="text"  class="form-control"     >
             </div>
 
 
-            <div class="col-md-2">userMessage:</div>
+            <div th:text="#{userMessage}" class="col-md-2">:</div>
             <div class="col-md-10 form-group" >
                 <input th:field="*{userMessage}"  type="text"  class="form-control"     >
             </div>
 
 
-                <div class="col-md-2"></div>
+                <div  class="col-md-2"></div>
                 <div class="col-md-10 form-group">
                     <input type="reset" class="btn btn-danger" value="Temizle" >
                     <input type="submit" class="btn btn-primary" value="Gönder" >

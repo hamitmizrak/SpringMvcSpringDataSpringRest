@@ -1,7 +1,8 @@
 package com.innova.controller;
 
 import com.innova.entity.ComputerEntity;
-import com.innova.repository.ComputerRepository;
+import com.innova.repository.IComputerRepository;
+import com.innova.repository.impl.MyRepositoryImp;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +19,7 @@ import java.util.Optional;
 public class ComputerController {
 
     @Autowired
-    ComputerRepository computerRepository;
+    IComputerRepository computerRepository;
 
     /////SAVE
     // http://localhost:8080/computer/create
@@ -30,7 +31,7 @@ public class ComputerController {
                 .computerId(0L)
                 .computerName("computerName44")
                 .computerTrade("computerTrade44")
-                .computerPrice("computerPrice44")
+                .computerPrice(44)
                 .build();
         //kaydettim
         computerRepository.save(computerEntity);
@@ -43,7 +44,7 @@ public class ComputerController {
     public String getCreateComputerRequestParam(
             @RequestParam(name = "computer_name") String computerName ,
             @RequestParam(name = "computer_trade") String computerTrade,
-            @RequestParam(name = "computer_price") String computerPrice
+            @RequestParam(name = "computer_price") double computerPrice
     ){
         ComputerEntity computerEntity=ComputerEntity
                 .builder()
@@ -102,7 +103,7 @@ public class ComputerController {
            @PathVariable(name="id")  Long idim,
            @RequestParam(name="computer_name") String computerName,
            @RequestParam(name="computer_trade") String computerTrade,
-           @RequestParam(name="computer_price") String computerPrice
+           @RequestParam(name="computer_price") double computerPrice
     ){
         Optional<ComputerEntity> optional=computerRepository.findById(idim);
         if(optional.isPresent()){
@@ -144,6 +145,23 @@ public class ComputerController {
         //cast
         return iterableList+"\n";
     }
+
+    ////KEndi repository kullanacağım
+    @Autowired
+    MyRepositoryImp myRepositoryImp;
+
+    //SELECT
+    // http://localhost:8080/computer/select/minprice/66
+    @GetMapping("/computer/select/minprice/{price}")
+    @ResponseBody
+    public String getComputerSelectPriceMin( @PathVariable(name="price") double priceTotal ){
+        Iterable<ComputerEntity> iterableList= myRepositoryImp.findComputerPriceMin(priceTotal);
+        for(ComputerEntity temp :iterableList){
+            log.info(temp);
+        }
+        return iterableList+"\n";
+    }
+
 
 
 }

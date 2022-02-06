@@ -35,7 +35,7 @@ public class ComputerEntity implements Serializable {
 
     @Column(name = "computer_price")
     //@Column(name = "computer_price",columnDefinition = "Decimal(10,2) default='100.00'")
-    private String computerPrice;
+    private double computerPrice;
 
     @Column(name = "created_date")
     @Temporal(TemporalType.TIMESTAMP)

@@ -2,6 +2,7 @@ package com.innova.controller;
 
 import com.innova.entity.ComputerEntity;
 import com.innova.repository.ComputerRepository;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +14,7 @@ import java.util.Optional;
 
 
 @Controller
+@Log4j2
 public class ComputerController {
 
     @Autowired
@@ -114,4 +116,34 @@ public class ComputerController {
             return " data bulunamadı ve güncellenemedi !!! ";
         }
     }
+
+
+    //SELECT
+    // http://localhost:8080/computer/select/findall
+    @GetMapping("/computer/select/findall")
+    @ResponseBody
+    public String getComputerSelectAll(){
+        Iterable<ComputerEntity> iterableList=  computerRepository.findAll();
+        for(ComputerEntity temp :iterableList){
+            log.info(temp);
+        }
+       //cast
+        return iterableList+"\n";
+    }
+
+
+    //SELECT
+    // http://localhost:8080/computer/select/findall/specific/name66
+    @GetMapping("/computer/select/findall/specific/{computer_name}")
+    @ResponseBody
+    public String getComputerSelectAllSpesific( @PathVariable(name="computer_name") String computerNamex ){
+        Iterable<ComputerEntity> iterableList=  computerRepository.findComputerEntitiesByComputerName(computerNamex);
+        for(ComputerEntity temp :iterableList){
+            log.info(temp);
+        }
+        //cast
+        return iterableList+"\n";
+    }
+
+
 }

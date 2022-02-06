@@ -1,62 +1,66 @@
 <!doctype html>
-<html  th:lang="${#locale.language}"  xmlns:th="http://www.thymeleaf.org" >
+<html th:lang="${#locale.language}" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Thymeleaf -2 </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet"   th:href="@{/css/style2.css}">
+
+    <!--thymeleaf css-->
+    <link rel="stylesheet" th:href="@{/css/style2.css}">
+
+    <!--thymeleaf js-->
     <script th:src="@{/js/template2.js}"></script>
 </head>
 <body class="bg-dark text-white">
 <!--start codes-->
 <!--th:action:getMapping
 th:object:model key-->
+<!--#{userName} bunun amacı messages.properties-->
 
 <p th:text="#{form}" class="text-center display-4 text-uppercase"></p>
 
-<form th:method="post" th:action="@{/formurl}" th:object="${key_form}" >
-
+<form th:method="post" th:action="@{/formurl}" th:object="${key_form}">
     <div class="container">
         <div class="row">
-                <div th:text="#{userName}" class="col-md-2">:</div>
-                <div class="col-md-10 form-group" >
-                    <input th:field="*{userName}"  type="text"  class="form-control" autofocus>
-                    <div th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}" ></div>
-                </div>
+            <div th:text="#{userName}" class="col-md-2">:</div>
+            <div class="col-md-10 form-group">
+                <input th:field="*{userName}" type="text" class="form-control" autofocus>
+                <div th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}"></div>
+            </div>
 
             <div th:text="#{userSurname}" class="col-md-2">:</div>
-            <div class="col-md-10 form-group" >
-                <input th:field="*{userSurname}"  type="text"  class="form-control" >
-                <div th:if="${#fields.hasErrors('userSurname')}" th:errors="*{userSurname}" ></div>
+            <div class="col-md-10 form-group">
+                <input th:field="*{userSurname}" type="text" class="form-control">
+                <div th:if="${#fields.hasErrors('userSurname')}" th:errors="*{userSurname}"></div>
             </div>
 
             <div th:text="#{emailAddress}" class="col-md-2">:</div>
-            <div class="col-md-10 form-group" >
-                <input th:field="*{emailAddress}"  type="text"  class="form-control"     >
-                <div th:if="${#fields.hasErrors('emailAddress')}" th:errors="*{emailAddress}" ></div>
+            <div class="col-md-10 form-group">
+                <input th:field="*{emailAddress}" type="text" class="form-control">
+                <div th:if="${#fields.hasErrors('emailAddress')}" th:errors="*{emailAddress}"></div>
             </div>
 
 
             <div th:text="#{userAge}" class="col-md-2">:</div>
-            <div class="col-md-10 form-group" >
-                <input th:field="*{userAge}"  type="text"  class="form-control"     >
-                <div th:if="${#fields.hasErrors('userAge')}" th:errors="*{userAge}" ></div>
+            <div class="col-md-10 form-group">
+                <input th:field="*{userAge}" type="text" class="form-control">
+                <div th:if="${#fields.hasErrors('userAge')}" th:errors="*{userAge}"></div>
             </div>
 
 
             <div th:text="#{userMessage}" class="col-md-2">:</div>
-            <div class="col-md-10 form-group" >
-                <input th:field="*{userMessage}"  type="text"  class="form-control"     >
-                <div th:if="${#fields.hasErrors('userMessage')}" th:errors="*{userMessage}" ></div>
+            <div class="col-md-10 form-group">
+                <input th:field="*{userMessage}" type="text" class="form-control">
+                <div th:if="${#fields.hasErrors('userMessage')}" th:errors="*{userMessage}"></div>
             </div>
 
 
-                <div  class="col-md-2"></div>
-                <div class="col-md-10 form-group">
-                    <input type="reset" class="btn btn-danger" value="Temizle" >
-                    <input type="submit" class="btn btn-primary" value="Gönder" >
-                </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-10 form-group">
+                <input type="reset" class="btn btn-danger" value="Temizle">
+                <input type="submit" class="btn btn-primary" value="Gönder">
+            </div>
 
         </div>
     </div>

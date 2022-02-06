@@ -1,6 +1,6 @@
 package com.innova.controller;
 
-import com.innova.dto.InnovaValidationDto;
+import com.innova.dto.FormValidationDto;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,19 +13,20 @@ import javax.validation.Valid;
 
 @Controller
 @Log4j2
+
+//@Controller @Log4j2 @GEtMapping @PostMapping @Valid @ModelAttribute
 public class FormValidationController {
 
     // http://localhost:8080/formurl
     @GetMapping("/formurl")
     public String getForm(Model model) {
-        model.addAttribute("key_form", new InnovaValidationDto());
+        model.addAttribute("key_form", new FormValidationDto());
         return "formvalidation";
     }
 
     // http://localhost:8080/formurl
     @PostMapping("/formurl")
-    public String postForm(@Valid @ModelAttribute("key_form") InnovaValidationDto dto, BindingResult bindingResult) {
-
+    public String postForm(@Valid @ModelAttribute("key_form") FormValidationDto dto, BindingResult bindingResult) {
         if(bindingResult.hasErrors()){
             log.error("Hata var");
             log.info(dto);

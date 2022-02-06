@@ -8,12 +8,15 @@ import lombok.extern.log4j.Log4j2;
 
 import javax.validation.constraints.*;
 
+//lombok
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Log4j2
-public class InnovaValidationDto {
+
+// NEMM :  @NotEmpty @Email @Min @Max @Size
+public class FormValidationDto {
 
     @NotEmpty(message = "adı alanını boş geçemezsiniz")
     private String userName;

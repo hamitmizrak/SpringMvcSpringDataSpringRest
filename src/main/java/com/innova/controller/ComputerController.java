@@ -147,15 +147,15 @@ public class ComputerController {
     }
 
     ////KEndi repository kullanacağım
-    //  @Autowired
-    // MyRepositoryImp myRepositoryImp;
+     @Autowired
+     MyRepositoryImp myRepositoryImp;
 
     //SELECT
     // http://localhost:8080/computer/select/minprice/66
     @GetMapping("/computer/select/minprice/{price}")
     @ResponseBody
     public String getComputerSelectPriceMin( @PathVariable(name="price") double priceTotal ){
-        Iterable<ComputerEntity> iterableList= computerRepository.findComputerPriceMin(priceTotal);
+        Iterable<ComputerEntity> iterableList= myRepositoryImp.findComputerPriceMin(priceTotal);
         for(ComputerEntity temp :iterableList){
             log.info(temp);
         }

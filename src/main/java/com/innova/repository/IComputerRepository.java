@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface IComputerRepository extends CrudRepository<ComputerEntity,Long>,IMyRepository {
+public interface IComputerRepository extends CrudRepository<ComputerEntity,Long> {
 
     //1.YOL
     //Register MVC thymeleaf, Entity register, Database ekleyeğiz

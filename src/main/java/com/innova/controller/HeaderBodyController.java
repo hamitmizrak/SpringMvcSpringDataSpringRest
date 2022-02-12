@@ -81,7 +81,7 @@ public class HeaderBodyController {
 
 
 
-    // RESPONSE HEADER
+    // RESPONSE COOKIE
     // Amaç: Server header oluşturup Client göndermesi
     // http://localhost:8080/controller/response/cookie
     @GetMapping("/controller/response/cookie")

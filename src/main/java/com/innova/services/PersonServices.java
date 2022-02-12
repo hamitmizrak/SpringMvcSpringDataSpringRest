@@ -34,10 +34,11 @@ public class PersonServices {
 
     // http://localhost:8080/rest/pathvariable/kalem44
     @GetMapping(value = "/rest/pathvariable/{urunadi}")
-    public ProductDto getDProduces(@PathVariable("urunadi") String urunAdi){
+    public ProductDto getProduces(@PathVariable("urunadi") String urunAdi){
         ProductDto productDto=ProductDto.builder().productId(0L).productName(urunAdi).productPrice(77).build();
         return productDto;
     }
+
 
 
     // http://localhost:8080/rest/list/

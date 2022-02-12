@@ -79,4 +79,23 @@ public class HeaderBodyController {
         return "@Controller(Client): "+result;
     }
 
+
+
+    // RESPONSE HEADER
+    // Amaç: Server header oluşturup Client göndermesi
+    // http://localhost:8080/controller/response/cookie
+    @GetMapping("/controller/response/cookie")
+    @ResponseBody
+    public String getResponseCookieController1() {
+
+        String URL = "http://localhost:8080/service/response/cookie";
+        RestTemplate restTemplate=new RestTemplate();
+
+        ResponseEntity<String> data=restTemplate.exchange(URL, HttpMethod.GET,HttpEntity.EMPTY,String.class);
+        String gelenData=data.getHeaders().getFirst(HttpHeaders.SET_COOKIE);
+        String body=data.getBody();
+
+        return "@Controller(Client): "+body+" "+gelenData;
+    }
+
 }

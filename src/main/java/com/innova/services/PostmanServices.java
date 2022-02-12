@@ -8,19 +8,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api")
 @Log4j2
 public class PostmanServices {
 
     //GETMAPPING
     //UNUTMA: Sadece @GetMapping Browserda çalışır.
-    // http://localhost:8080/rest/postman/dynamicsjson
+    // http://localhost:8080/api/rest/postman/dynamicsjson
     @GetMapping("/rest/postman/dynamicsjson")
     public ProductDto getDynamicsJson() {
         ProductDto productDto = ProductDto.builder().productId(0L).productName("Product adı 44").productPrice(55).build();
         return productDto;
     }
 
-    // http://localhost:8080/rest/postman/dynamicsjson2/44
+    // http://localhost:8080/api/rest/postman/dynamicsjson2/44
     @GetMapping("/rest/postman/dynamicsjson2/{id}")
     public ProductDto getDynamicsJson2(@PathVariable(name = "id") Long id) {
         ProductDto productDto = ProductDto.builder().productId(id).productName("Product adı 44").productPrice(55).build();
@@ -28,7 +29,7 @@ public class PostmanServices {
     }
 
 
-    // http://localhost:8080/rest/postman/list/
+    // http://localhost:8080/api/rest/postman/list/
     @GetMapping(value = "/rest/postman/list/")
     public List<ProductDto> getProductList() {
         List<ProductDto> productDtoList = new ArrayList<>();
@@ -45,7 +46,7 @@ public class PostmanServices {
     //  There was an unexpected error (type=Method Not Allowed, status=405).
     //  Request method 'GET' not supported
     //  org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
-    //  http://localhost:8080/rest/post/postman
+    //  http://localhost:8080/api/rest/post/postman
     @PostMapping(value = "/rest/post/postman")
     public ProductDto postProduct(ProductDto productDto) {
         ProductDto productDto1 = productDto;
@@ -56,7 +57,7 @@ public class PostmanServices {
 
     /////////////////////////////////////////////
     //  PUT
-    //  http://localhost:8080/rest/put/postman
+    //  http://localhost:8080/api/rest/put/postman
     @PutMapping("/rest/put/postman")
     public void updateProduct(ProductDto productDto) {
         ProductDto productDto2 = productDto;
@@ -64,7 +65,7 @@ public class PostmanServices {
     }
 
     //  DELETE
-    //  http://localhost:8080/rest/delete/postman/4
+    //  http://localhost:8080/api/rest/delete/postman/4
     @DeleteMapping("/rest/delete/postman/{id}")
     public void deleteProduct(@PathVariable(name = "id") Long id) {
         log.info(id + " id silindi");

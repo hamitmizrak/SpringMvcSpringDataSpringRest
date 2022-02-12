@@ -125,7 +125,23 @@ public class ProductController {
         HttpEntity<ProductDto> productDtoHttpEntity=new HttpEntity<>(productDto);
         ResponseEntity<ProductDto> responseEntity=restTemplate.exchange(URL,HttpMethod.POST,productDtoHttpEntity,ProductDto.class);
         ProductDto productDto2=responseEntity.getBody();
-        return "Success ! HttpEntity bir hata varsa almak icin: "+productDto2;
+        return "Post Success ! HttpEntity bir hata varsa almak icin: "+productDto2;
+    }
+
+
+    ///////////
+    //PUT
+    // http://localhost:8080/client/controller/put/responseentity?urun_adi=bilgisayar&urun_fiyati=6000
+    @GetMapping("/client/controller/put/responseentity")
+    @ResponseBody
+    public String  putProductDtoResponseEntity(@RequestParam(name="urun_adi") String urunAdi,@RequestParam(name="urun_fiyati") double urunFiyati) {
+        ProductDto productDto=ProductDto.builder().productId(0L).productName(urunAdi).productPrice(urunFiyati).build();
+        String URL = "http://localhost:8080/put/productdto";
+        RestTemplate restTemplate = new RestTemplate();
+        //HttpEntity aşağıda yazdım
+        ResponseEntity<ProductDto> responseEntity=restTemplate.exchange(URL,HttpMethod.PUT, new HttpEntity<ProductDto>(productDto),ProductDto.class);
+        ProductDto productDto2=responseEntity.getBody();
+        return "Update Success ! HttpEntity bir hata varsa almak icin: "+productDto2;
     }
 
 

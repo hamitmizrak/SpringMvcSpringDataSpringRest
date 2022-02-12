@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @Log4j2
@@ -35,6 +36,17 @@ public class ServletExamples {
         log.info("info " + request.getPathInfo());
         log.info("method " + request.getMethod());
         log.info("port " + request.getServerPort());
+        return ResponseEntity.ok(request.getPathInfo());
+    }
+
+    // http://localhost:8080/servlet/common
+    @GetMapping("/request/response")
+    @ResponseBody
+    public ResponseEntity<?> getServletRequestResponse(HttpServletRequest request, HttpServletResponse response) {
+        log.info("info " + request.getPathInfo());
+        log.info("method " + request.getMethod());
+        log.info("port " + request.getServerPort());
+        log.info("response " + response.getCharacterEncoding());
         return ResponseEntity.ok(request.getPathInfo());
     }
 }

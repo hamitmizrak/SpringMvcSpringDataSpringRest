@@ -37,7 +37,7 @@ public class ProductController {
     }
 
 
-    // http://localhost:8080/client/controller/productdto
+    // http://localhost:8080/client/controller/productdto/special/Deneme44
     @GetMapping("/client/controller/productdto/special/{urun_adi}")
     @ResponseBody
     public String getProductServicesResponseEntity(@PathVariable("urun_adi") String urunAdi) {

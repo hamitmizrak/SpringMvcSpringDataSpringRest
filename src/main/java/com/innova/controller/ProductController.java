@@ -27,7 +27,7 @@ public class ProductController {
         String URL = "http://localhost:8080/rest/manueljson";
         RestTemplate restTemplate = new RestTemplate();
         String jsonData = restTemplate.getForObject(URL, String.class); //String
-        return "client resten veri aldı: "+jsonData;
+        return "client resten veri aldı: " + jsonData;
     }
 
 
@@ -38,7 +38,7 @@ public class ProductController {
         String URL = "http://localhost:8080/rest/dynamicsjson";
         RestTemplate restTemplate = new RestTemplate();
         ProductDto productDto = restTemplate.getForObject(URL, ProductDto.class); //object
-        return "client resten veri aldı: "+productDto.getProductName().toUpperCase();
+        return "client resten veri aldı: " + productDto.getProductName().toUpperCase();
     }
 
 
@@ -46,26 +46,27 @@ public class ProductController {
     @GetMapping("/client/controller/productdto/special/{urun_adi}")
     @ResponseBody
     public String getProductServicesResponseEntity(@PathVariable("urun_adi") String urunAdi) {
-        String URL = "http://localhost:8080/rest/pathvariable/"+urunAdi;
+        String URL = "http://localhost:8080/rest/pathvariable/" + urunAdi;
         RestTemplate restTemplate = new RestTemplate();
         ProductDto productDto = restTemplate.getForObject(URL, ProductDto.class);
         //Kontrol
-        ResponseEntity<ProductDto> responseEntity=restTemplate.exchange(URL, HttpMethod.GET, HttpEntity.EMPTY,ProductDto.class);
-        ProductDto productDto2=responseEntity.getBody();
-        return "client resten veri aldı: "+productDto2;
+        ResponseEntity<ProductDto> responseEntity = restTemplate.exchange(URL, HttpMethod.GET, HttpEntity.EMPTY, ProductDto.class);
+        ProductDto productDto2 = responseEntity.getBody();
+        return "client resten veri aldı: " + productDto2;
     }
 
 
     // http://localhost:8080/client/controller/productdto/specialList/
     @GetMapping("/client/controller/productdto/specialList/")
     @ResponseBody
-    public List<ProductDto>  getProductServicesResponseEntityList() {
+    public List<ProductDto> getProductServicesResponseEntityList() {
         String URL = "http://localhost:8080/rest/list/";
         RestTemplate restTemplate = new RestTemplate();
         //Anonymous Class
-        ResponseEntity<List<ProductDto>> responseEntity=restTemplate.exchange(URL, HttpMethod.GET, HttpEntity.EMPTY, new ParameterizedTypeReference<List<ProductDto>>() {});
-        List<ProductDto> list=responseEntity.getBody();
-        for (ProductDto temp:list){
+        ResponseEntity<List<ProductDto>> responseEntity = restTemplate.exchange(URL, HttpMethod.GET, HttpEntity.EMPTY, new ParameterizedTypeReference<List<ProductDto>>() {
+        });
+        List<ProductDto> list = responseEntity.getBody();
+        for (ProductDto temp : list) {
             log.info(temp);
         }
         //Database kaydetmek ,dosyaya kaydetmek
@@ -76,28 +77,30 @@ public class ProductController {
     // http://localhost:8080/client/controller/productdto/xml
     @GetMapping("/client/controller/productdto/xml")
     @ResponseBody
-    public List<ProductDto>  getXmlProductServicesResponseEntityList() {
+    public List<ProductDto> getXmlProductServicesResponseEntityList() {
         String URL = "http://localhost:8080/rest/xml";
         RestTemplate restTemplate = new RestTemplate();
         //Anonymous Class
-        ResponseEntity<List<ProductDto>> responseEntity=restTemplate.exchange(URL, HttpMethod.GET, HttpEntity.EMPTY, new ParameterizedTypeReference<List<ProductDto>>() {});
-        List<ProductDto> list=responseEntity.getBody();
-        for (ProductDto temp:list){
+        ResponseEntity<List<ProductDto>> responseEntity = restTemplate.exchange(URL, HttpMethod.GET, HttpEntity.EMPTY, new ParameterizedTypeReference<List<ProductDto>>() {
+        });
+        List<ProductDto> list = responseEntity.getBody();
+        for (ProductDto temp : list) {
             log.info(temp);
         }
         //Database kaydetmek ,dosyaya kaydetmek
         return list;
     }
+
     //////////////////////////////
     ///POST
     // http://localhost:8080/client/controller/post
     @GetMapping("/client/controller/post")
     @ResponseBody
-    public String  postBasic() {
-        ProductDto productDto=ProductDto.builder().productId(0L).productName("Hamit").productPrice(3000).build();
+    public String postBasic() {
+        ProductDto productDto = ProductDto.builder().productId(0L).productName("Hamit").productPrice(3000).build();
         String URL = "http://localhost:8080/post/basic";
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.postForObject(URL,productDto,Void.class); //Void
+        restTemplate.postForObject(URL, productDto, Void.class); //Void
         return "Success !";
     }
 
@@ -105,27 +108,27 @@ public class ProductController {
     // http://localhost:8080/client/controller/post?urun_adi=bilgisayar&urun_fiyati=6000
     @GetMapping("/client/controller/dto")
     @ResponseBody
-    public String  postProductDto(@RequestParam(name="urun_adi") String urunAdi,@RequestParam(name="urun_fiyati") double urunFiyati) {
-        ProductDto productDto=ProductDto.builder().productId(0L).productName(urunAdi).productPrice(urunFiyati).build();
+    public String postProductDto(@RequestParam(name = "urun_adi") String urunAdi, @RequestParam(name = "urun_fiyati") double urunFiyati) {
+        ProductDto productDto = ProductDto.builder().productId(0L).productName(urunAdi).productPrice(urunFiyati).build();
         String URL = "http://localhost:8080/post/productdto";
         RestTemplate restTemplate = new RestTemplate();
-        ProductDto productDto2=  restTemplate.postForObject(URL,productDto,ProductDto.class); //ProductDto
+        ProductDto productDto2 = restTemplate.postForObject(URL, productDto, ProductDto.class); //ProductDto
 
-        return "Success !"+productDto2;
+        return "Success !" + productDto2;
     }
 
     // http://localhost:8080/client/controller/post/responseentity?urun_adi=bilgisayar&urun_fiyati=6000
     @GetMapping("/client/controller/post/responseentity")
     @ResponseBody
-    public String  postProductDtoResponseEntity(@RequestParam(name="urun_adi") String urunAdi,@RequestParam(name="urun_fiyati") double urunFiyati) {
-        ProductDto productDto=ProductDto.builder().productId(0L).productName(urunAdi).productPrice(urunFiyati).build();
+    public String postProductDtoResponseEntity(@RequestParam(name = "urun_adi") String urunAdi, @RequestParam(name = "urun_fiyati") double urunFiyati) {
+        ProductDto productDto = ProductDto.builder().productId(0L).productName(urunAdi).productPrice(urunFiyati).build();
         String URL = "http://localhost:8080/post/productdto";
         RestTemplate restTemplate = new RestTemplate();
 
-        HttpEntity<ProductDto> productDtoHttpEntity=new HttpEntity<>(productDto);
-        ResponseEntity<ProductDto> responseEntity=restTemplate.exchange(URL,HttpMethod.POST,productDtoHttpEntity,ProductDto.class);
-        ProductDto productDto2=responseEntity.getBody();
-        return "Post Success ! HttpEntity bir hata varsa almak icin: "+productDto2;
+        HttpEntity<ProductDto> productDtoHttpEntity = new HttpEntity<>(productDto);
+        ResponseEntity<ProductDto> responseEntity = restTemplate.exchange(URL, HttpMethod.POST, productDtoHttpEntity, ProductDto.class);
+        ProductDto productDto2 = responseEntity.getBody();
+        return "Post Success ! HttpEntity bir hata varsa almak icin: " + productDto2;
     }
 
 
@@ -134,14 +137,26 @@ public class ProductController {
     // http://localhost:8080/client/controller/put/responseentity?urun_adi=bilgisayar&urun_fiyati=6000
     @GetMapping("/client/controller/put/responseentity")
     @ResponseBody
-    public String  putProductDtoResponseEntity(@RequestParam(name="urun_adi") String urunAdi,@RequestParam(name="urun_fiyati") double urunFiyati) {
-        ProductDto productDto=ProductDto.builder().productId(0L).productName(urunAdi).productPrice(urunFiyati).build();
+    public String putProductDtoResponseEntity(@RequestParam(name = "urun_adi") String urunAdi, @RequestParam(name = "urun_fiyati") double urunFiyati) {
+        ProductDto productDto = ProductDto.builder().productId(0L).productName(urunAdi).productPrice(urunFiyati).build();
         String URL = "http://localhost:8080/put/productdto";
         RestTemplate restTemplate = new RestTemplate();
         //HttpEntity aşağıda yazdım
-        ResponseEntity<ProductDto> responseEntity=restTemplate.exchange(URL,HttpMethod.PUT, new HttpEntity<ProductDto>(productDto),ProductDto.class);
-        ProductDto productDto2=responseEntity.getBody();
-        return "Update Success ! HttpEntity bir hata varsa almak icin: "+productDto2;
+        ResponseEntity<ProductDto> responseEntity = restTemplate.exchange(URL, HttpMethod.PUT, new HttpEntity<ProductDto>(productDto), ProductDto.class);
+        ProductDto productDto2 = responseEntity.getBody();
+        return "Update Success ! HttpEntity bir hata varsa almak icin: " + productDto2;
+    }
+
+    ///////////
+    // DELETE
+    // http://localhost:8080/client/controller/delete/1
+    @GetMapping("/client/controller/delete/{id}")
+    @ResponseBody
+    public String deleteProduct(@PathVariable(name = "id") Long id) {
+        String URL = "http://localhost:8080/delete/productdto/"+id;
+        RestTemplate restTemplate=new RestTemplate();
+        restTemplate.exchange(URL,HttpMethod.DELETE,HttpEntity.EMPTY,Void.class);
+        return "Silindi Controller";
     }
 
 

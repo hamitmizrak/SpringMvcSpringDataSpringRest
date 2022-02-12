@@ -21,11 +21,10 @@
     <dependencies>
 
         <!--default xml yapmak icin-->
-        <dependency>
+      <!--  <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-xml</artifactId>
-        </dependency>
-
+        </dependency>-->
 
         <!--jpa -->
         <dependency>

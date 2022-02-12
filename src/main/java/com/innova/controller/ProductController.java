@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
@@ -86,6 +87,45 @@ public class ProductController {
         }
         //Database kaydetmek ,dosyaya kaydetmek
         return list;
+    }
+    //////////////////////////////
+    ///POST
+    // http://localhost:8080/client/controller/post
+    @GetMapping("/client/controller/post")
+    @ResponseBody
+    public String  postBasic() {
+        ProductDto productDto=ProductDto.builder().productId(0L).productName("Hamit").productPrice(3000).build();
+        String URL = "http://localhost:8080/post/basic";
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.postForObject(URL,productDto,Void.class); //Void
+        return "Success !";
+    }
+
+
+    // http://localhost:8080/client/controller/post?urun_adi=bilgisayar&urun_fiyati=6000
+    @GetMapping("/client/controller/dto")
+    @ResponseBody
+    public String  postProductDto(@RequestParam(name="urun_adi") String urunAdi,@RequestParam(name="urun_fiyati") double urunFiyati) {
+        ProductDto productDto=ProductDto.builder().productId(0L).productName(urunAdi).productPrice(urunFiyati).build();
+        String URL = "http://localhost:8080/post/productdto";
+        RestTemplate restTemplate = new RestTemplate();
+        ProductDto productDto2=  restTemplate.postForObject(URL,productDto,ProductDto.class); //ProductDto
+
+        return "Success !"+productDto2;
+    }
+
+    // http://localhost:8080/client/controller/post/responseentity?urun_adi=bilgisayar&urun_fiyati=6000
+    @GetMapping("/client/controller/post/responseentity")
+    @ResponseBody
+    public String  postProductDtoResponseEntity(@RequestParam(name="urun_adi") String urunAdi,@RequestParam(name="urun_fiyati") double urunFiyati) {
+        ProductDto productDto=ProductDto.builder().productId(0L).productName(urunAdi).productPrice(urunFiyati).build();
+        String URL = "http://localhost:8080/post/productdto";
+        RestTemplate restTemplate = new RestTemplate();
+
+        HttpEntity<ProductDto> productDtoHttpEntity=new HttpEntity<>(productDto);
+        ResponseEntity<ProductDto> responseEntity=restTemplate.exchange(URL,HttpMethod.POST,productDtoHttpEntity,ProductDto.class);
+        ProductDto productDto2=responseEntity.getBody();
+        return "Success ! HttpEntity bir hata varsa almak icin: "+productDto2;
     }
 
 

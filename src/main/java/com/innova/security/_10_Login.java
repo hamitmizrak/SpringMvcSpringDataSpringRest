@@ -16,13 +16,19 @@ public class _10_Login extends WebSecurityConfigurerAdapter {
                .antMatchers("/security/public","/security/success") //bu @GetMapping izin verdiğim url
                .permitAll()//yukarıdaki asyfalara login olmadan izin ver
                .antMatchers("/login").permitAll()
+               .antMatchers("/logout").permitAll()
                .anyRequest()
                .authenticated()
                .and()
                .formLogin()
                .loginPage("/login")
                .defaultSuccessUrl("/security/private")
-               .and();
+               .and()
+               .logout()
+               .logoutSuccessUrl("/logout")
+               .invalidateHttpSession(true)
+               .permitAll();
+
     }
 
 

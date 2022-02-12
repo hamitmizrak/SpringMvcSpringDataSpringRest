@@ -19,6 +19,14 @@
     </properties>
 
     <dependencies>
+
+        <!--default xml yapmak icin-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-xml</artifactId>
+        </dependency>
+
+
         <!--jpa -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

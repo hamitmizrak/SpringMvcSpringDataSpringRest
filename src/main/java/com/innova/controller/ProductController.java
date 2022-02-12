@@ -67,6 +67,24 @@ public class ProductController {
         for (ProductDto temp:list){
             log.info(temp);
         }
+        //Database kaydetmek ,dosyaya kaydetmek
+        return list;
+    }
+
+    //XML
+    // http://localhost:8080/client/controller/productdto/xml
+    @GetMapping("/client/controller/productdto/xml")
+    @ResponseBody
+    public List<ProductDto>  getXmlProductServicesResponseEntityList() {
+        String URL = "http://localhost:8080/rest/xml";
+        RestTemplate restTemplate = new RestTemplate();
+        //Anonymous Class
+        ResponseEntity<List<ProductDto>> responseEntity=restTemplate.exchange(URL, HttpMethod.GET, HttpEntity.EMPTY, new ParameterizedTypeReference<List<ProductDto>>() {});
+        List<ProductDto> list=responseEntity.getBody();
+        for (ProductDto temp:list){
+            log.info(temp);
+        }
+        //Database kaydetmek ,dosyaya kaydetmek
         return list;
     }
 

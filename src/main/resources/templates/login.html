@@ -1,0 +1,31 @@
+<!doctype html>
+<html  th:lang="${#locale.language}"  xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <title>Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!--    <link rel="stylesheet"   th:href="@{/css/style.css}">-->
+<!--    <script th:src="@{/js/template.js}"></script>-->
+</head>
+<body class="container bg-dark text-white">
+<!--start codes-->
+
+<h1 class="text-center">Login Sayfası</h1>
+<h5 th:text="${key_message}" class="text-center"></h5>
+
+<form  th:name="login"  class="container" action="/login" method="post" >
+     <input   type="hidden"   th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+     <input  type="text"     th:name="username"       class="form-control"  />
+     <input  type="password" th:name="password"       class="form-control" />
+     <input  type="checkbox" th:name="remember-me"    class="form-control" />
+    <input type="submit" value="Gönder" class="btn btn-primary" />
+</form>
+
+<!--end codes-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

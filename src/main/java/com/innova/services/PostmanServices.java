@@ -2,10 +2,7 @@ package com.innova.services;
 
 import com.innova.dto.ProductDto;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,15 +40,34 @@ public class PostmanServices {
     }
 
     /////////////////////////////////////////////
-//    There was an unexpected error (type=Method Not Allowed, status=405).
-//    Request method 'GET' not supported
-//    org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
-    // http://localhost:8080/rest/post/postman
+    //  NOT:405 almamak için Postmande deneyelim
+    //  POST
+    //  There was an unexpected error (type=Method Not Allowed, status=405).
+    //  Request method 'GET' not supported
+    //  org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+    //  http://localhost:8080/rest/post/postman
     @PostMapping(value = "/rest/post/postman")
     public ProductDto postProduct(ProductDto productDto) {
         ProductDto productDto1 = productDto;
         log.info(productDto1);
         return productDto1;
+    }
+
+
+    /////////////////////////////////////////////
+    //  PUT
+    //  http://localhost:8080/rest/put/postman
+    @PutMapping("/rest/put/postman")
+    public void updateProduct(ProductDto productDto) {
+        ProductDto productDto2 = productDto;
+        log.info(productDto2);
+    }
+
+    //  DELETE
+    //  http://localhost:8080/rest/delete/postman/4
+    @DeleteMapping("/rest/delete/postman/{id}")
+    public void deleteProduct(@PathVariable(name = "id") Long id) {
+        log.info(id + " id silindi");
     }
 
 }

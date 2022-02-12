@@ -54,4 +54,29 @@ public class HeaderBodyController {
         return "@Controller(Client): "+body+" "+gelenData;
     }
 
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // REQUEST COOKIE
+    // Amaç: Client coolie  oluşturup Servera göndermesi
+    // client Servera gizli olarak data göndermek exam:token v.s
+    // aşağıdaki link @RestController gidecek ve geri gelecek
+    // http://localhost:8080/controller/client/cookie
+    @GetMapping("/controller/client/cookie")
+    @ResponseBody
+    public String getRequestCookieController() {
+
+        String URL = "http://localhost:8080/service/client/cookie";
+        RestTemplate restTemplate=new RestTemplate();
+
+        HttpHeaders httpHeaders=new HttpHeaders();
+        httpHeaders.add(HttpHeaders.COOKIE,"key_cookie=cookieValue");
+
+        HttpEntity<String>  httpEntity=new HttpEntity<String>("Bu data verisi",httpHeaders);
+
+        ResponseEntity<String> data=restTemplate.exchange(URL, HttpMethod.GET,httpEntity,String.class);
+        String result=data.getBody();
+
+        return "@Controller(Client): "+result;
+    }
+
 }

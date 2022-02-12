@@ -12,10 +12,25 @@ import org.springframework.web.bind.annotation.RestController;
 public class HeaderBodyServices {
 
     // REQUEST HEADER
+    // Amaç: Client header oluşturup Servera göndermesi
     // http://localhost:8080/service/client/header
     @GetMapping("/service/client/header")
-    public ResponseEntity<?> getHeader(@RequestHeader(value = "key_header", defaultValue = "default header") String gelenHeader) {
+    public ResponseEntity<?> getRequestHeader(@RequestHeader(value = "key_header", defaultValue = "default header") String gelenHeader) {
         log.info("@RestController(Server): "+gelenHeader);
         return ResponseEntity.ok(gelenHeader);
     }
+
+    // RESPONSE HEADER
+    // Amaç: Server header oluşturup Client göndermesi
+    //  http://localhost:8080/service/response/header
+    @GetMapping("/service/response/header")
+    public ResponseEntity<?> getResponseHeader(){
+        return ResponseEntity
+                .ok()
+                .header("key_response","Serverdan gelen Header response ")
+                .body("@RestController: gelen veri");
+    }
+
+
+
 }

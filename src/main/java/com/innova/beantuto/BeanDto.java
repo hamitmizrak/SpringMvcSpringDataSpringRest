@@ -16,4 +16,6 @@ public class BeanDto {
     private Long id;
     private String beanName;
     private String beanData;
+
+
 }

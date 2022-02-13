@@ -9,13 +9,23 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class BeanController {
 
     @Autowired
-    BeanConfig beanConfig;
+    _01_BeanBasic beanBasic;
 
-    // http://localhost:8080/bean/beandto
-    @GetMapping("/bean/beandto")
+    @Autowired
+    _02_BeanScope beanScope;
+
+    // http://localhost:8080/bean/basic
+    @GetMapping("/bean/basic")
     @ResponseBody
-    public String getBeanDto(){
-        return beanConfig.beanDto()+"";
+    public String getBeanBasic(){
+        return beanBasic.beanBasic()+"";
+    }
+
+    // http://localhost:8080/bean/scope
+    @GetMapping("/bean/scope")
+    @ResponseBody
+    public String getBeanScope(){
+        return beanBasic.beanBasic().hashCode()+" ??? "+beanScope.beanScope().hashCode();
     }
 
 }

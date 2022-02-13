@@ -14,10 +14,6 @@ public class _12_Authorization extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                     .antMatchers("/","/index").permitAll()
-                    .antMatchers("/security/public", "/security/success") //bu @GetMapping izin verdiğim url
-                    .permitAll()//yukarıdaki asyfalara login olmadan izin ver
-                    .antMatchers("/login").permitAll()
-                    .antMatchers("/logout").permitAll()
                     .antMatchers("/security/writer").hasRole("USER")
                     .antMatchers("/security/admin").hasRole("ADMIN")
                     .anyRequest()

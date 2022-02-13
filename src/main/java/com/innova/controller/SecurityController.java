@@ -83,5 +83,18 @@ public class SecurityController {
     }
 
 
+    // FarkliKullanicilar Aynı Sayfada Farkl kullanıcılar
+    // http://localhost:8080/spesific_page
+    @GetMapping("/spesific_page")
+    public String getSpesific(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String user = "";
+        if (authentication != null) {
+            user = authentication.getName();
+        }
+        model.addAttribute("system_user", user);
+        return "/aynisayfafarklikullanici/farklıkullanicilar";
+    }
+
 
 }

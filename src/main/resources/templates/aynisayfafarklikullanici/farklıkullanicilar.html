@@ -1,0 +1,41 @@
+<!doctype html>
+<html
+        th:lang="${#locale.language}"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+
+>
+<head>
+    <title>Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!--    <link rel="stylesheet"   th:href="@{/css/style.css}">-->
+<!--    <script th:src="@{/js/template.js}"></script>-->
+</head>
+<body>
+<!--start codes-->
+<span>Merhabalar  <span th:text="${system_user}"> </span></span>
+<h5 th:text="${key_logout}" class="text-center"></h5>
+<a href="/index" class="btn btn-primary"> Anasayfaya Git</a>
+<a href="/logout" class="btn btn-primary"> Logout sayfası Git</a>
+<a href="/roles" class="btn btn-primary"> Rolüm ?</a>
+
+
+<div sec:authorize="isAuthenticated()">
+    <span class="text-danger" >Bu içerik yalnızca kimliği doğrulanmış kullanıcılara gösterilir.</span>
+</div>
+<div sec:authorize="hasRole('ADMIN')">
+    <span class="text-success" >Admin sadece  Görebilir</span>
+</div>
+<div sec:authorize="hasRole('USER')">
+    <span class="text-warning" >User ve Admin Görebilir</span>
+</div>
+
+<!--end codes-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -10,6 +10,7 @@ public class CorsServices {
 
     // http://localhost:8080/cors
     @CrossOrigin
+    //@CrossOrigin(origins = {"http://localhost:5500","http://localhost:8080/cors"} )
     @GetMapping("/cors")
     @ResponseBody
     public String mesaj() {

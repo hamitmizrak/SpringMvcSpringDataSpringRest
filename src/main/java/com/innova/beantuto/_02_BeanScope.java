@@ -8,7 +8,11 @@ import org.springframework.context.annotation.Scope;
 public class _02_BeanScope {
 
     @Bean
-    @Scope("prototype")
+// @Scope("singleton") // Default olandır proje başlarken Init ve destroy çalışır default olandır projeyi kapattığımda ölür
+// @Scope("request")   // sadece Tek istekte  atıldığında yaşar ve ölür
+// @Scope("session")   // oturum kapatıldığında ölür
+// @Scope("prototype") // Clone oluşurur başlarken 2 tanedir
+
     public BeanDto beanScope() {
         return BeanDto.builder().id(0L).beanData("Data pro").beanName("Adı pro").build();
     }

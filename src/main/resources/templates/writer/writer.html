@@ -1,0 +1,30 @@
+<!doctype html>
+<html  th:lang="${#locale.language}"  xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <title>Secret page (Writer)</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!--    <link rel="stylesheet"   th:href="@{/css/style.css}">-->
+    <!--    <script th:src="@{/js/template.js}"></script>-->
+</head>
+<body>
+<!--start codes-->
+
+<h1>Writer Sayfası</h1>
+<h2>Bu sayfaya hem Admin hemde writer giriş yapabilir yapabilir.</h2>
+<span>Merhabalar: <span th:text="${system_user}"></span> </span>
+<h3 th:text="${key_logout}" class="text-center"></h3>
+
+<a href="/index" class="btn btn-primary">Anayasayfa</a>
+<a href="/security/roles" class="btn btn-primary">Rolüm ? </a>
+<a href="/logout" class="btn btn-primary">Güvenli Çıkış</a>
+
+
+<!--end codes-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -4,7 +4,13 @@
 ![visitor badge](https://visitor-badge.glitch.me/badge?page_id=jwenjian.visitor-badge&left_text=My%20Page%20Visitors)
 
 [![Hits](https://hits.sh/github.com/silentsoft/hits.svg)](https://hits.sh/github.com/silentsoft/hits/)
-https://shields-io-visitor-counter.herokuapp.com/badge?page=octocat.Spoon-Knife&label=My First Counter&labelColor=000000&logo=GitHub&logoColor=FFFFFF&color=1D70B8&style=for-the-badge
+
+[![visitors](https://visitor-badge.vercel.app/p/visitor-badge-node?color=brightgreen)](https://github.com/WangNingkai/visitor-badge-node)
+![GitHub top language](https://img.shields.io/github/languages/top/wangningkai/visitor-badge-node.svg?style=popout-square)
+![GitHub last commit](https://img.shields.io/github/last-commit/wangningkai/visitor-badge-node.svg?style=popout-square)
+![GitHub](https://img.shields.io/github/license/wangningkai/visitor-badge-node.svg?style=popout-square)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+
 
 # Tekonolojiler
 
